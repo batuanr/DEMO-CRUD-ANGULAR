@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <form class="form-register" [formGroup]="myForm" (ngSubmit)="myForm.valid &&ngSubmit(myForm)" novalidate>
+                    <mat-error class="alert alert-primary">{{status}}</mat-error>
+                    <!--NAME -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Name .." name="name" formControlName="name" >
+                        <mat-icon color="accent" matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="myForm.hasError('required', 'name')">The name is required!</mat-error>
+<!--                        <mat-error *ngIf="name.hasError('minlength')">The name must more than 3 character!</mat-error>-->
+                    </mat-form-field><br>
+                    <!--USERNAME -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Username: </mat-label>
+                        <input matInput placeholder="Username ..." name="username" formControlName="username" >
+                        <mat-icon color="accent" matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="myForm.hasError('required', 'username')">The username is required!</mat-error>
+<!--                        <mat-error *ngIf="username.hasError('minlength')">The username must more than 3 character!</mat-error>-->
+                    </mat-form-field><br>
+                    <!--EMAIL --->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Email: </mat-label>
+                        <input matInput placeholder="Email ..." name="email" formControlName="email">
+                        <mat-icon color="accent" matSuffix>email</mat-icon>
+                        <mat-error *ngIf="myForm.hasError('required', 'email')">The username is required!</mat-error>
+<!--                        <mat-error *ngIf="emailFormControl.hasError('email')">The email invalid! Please try -> Ex: dinhbede@gmail.com</mat-error>-->
+                    </mat-form-field><br>
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Enter your password</mat-label>
+                        <input name="password" formControlName="password" [errorStateMatcher]="matcher" matInput [type]="hide ? 'password' : 'text'" required >
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon color="accent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="myForm.hasError('required', 'password')">Please enter your New Password</mat-error>
+                        <mat-error *ngIf="myForm.hasError('minlength', 'password')">The password must more than 6 character</mat-error>
+                    </mat-form-field><br>
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Enter Confirm Password</mat-label>
+                        <input name="confirmPassword" formControlName="confirmPassword" matInput [type]="hide ? 'password' : 'text'" [errorStateMatcher]="matcher">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon color="accent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="myForm.hasError('notSame')">
+                            The Confirm Password does not match the New Password
+                        </mat-error>
+                    </mat-form-field><br>
+                    <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Register
+                        <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
+                    </button>
+                </form>
+
+            </mat-card>
+        </div>
+    </div>
+</div>

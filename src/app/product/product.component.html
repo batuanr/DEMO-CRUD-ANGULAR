@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <mat-error style="width: 300px; text-align: center; margin: auto" *ngIf="status" class="alert alert-primary">{{status}}</mat-error>
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource">
+
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef> No. </th>
+                            <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> Name  </th>
+                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        </ng-container>
+
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="avatar">
+                            <th mat-header-cell *matHeaderCellDef> Avatar </th>
+                            <td mat-cell *matCellDef="let element"> <img class="img" [src]="element.avatar"> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="category">
+                            <th mat-header-cell *matHeaderCellDef> Category </th>
+                            <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="edit">
+                            <th mat-header-cell *matHeaderCellDef> Edit </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button [routerLink]="['/update/',element.id]" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                                    <mat-icon color="primary">edit</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="delete">
+                            <th mat-header-cell *matHeaderCellDef> Delete</th>
+                            <td mat-cell *matCellDef="let element">
+                                <button (click)="openDialog(element.id)"  mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                                    <mat-icon color="warn">delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                   showFirstLastButtons
+                                   aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                </div>
+
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <form class="edit" #f="ngForm" (ngSubmit)="f.form.valid&&ngSubmit()" novalidate>
+                    <mat-error *ngIf="status" class="alert alert-primary">{{status}}</mat-error>
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Name Category:</mat-label>
+                        <input matInput name="name" required [(ngModel)]="product.name">
+                    </mat-form-field><br>
+                    <mat-label>Avatar</mat-label><br>
+                    <img class="img" [src]="product.avatar">
+                    <app-upload (giveURLtoCreate)="onUploadAvatar($event)"></app-upload>
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Category</mat-label>
+                        <mat-select [(ngModel)]="product.category.id" name="c" #cate= "ngModel" required>
+                            <mat-option *ngFor="let c of categories" [value]="c.id" >
+                                {{c.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="cate.hasError('required')">The category is required!</mat-error>
+                    </mat-form-field><br>
+                    <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Update
+                        <mat-icon color="accent" matSuffix>update</mat-icon>
+                    </button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
