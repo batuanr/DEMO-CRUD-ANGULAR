@@ -14,9 +14,9 @@ import {LoginForm} from '../model/LoginForm';
 })
 export class AuthService {
   // API_LOCAL
-  private API_SIGNUP = environment.API_LOCAL + 'signup';
+  // private API_SIGNUP = environment.API_LOCAL + 'signup';
   // API_SERVER
-  // private API_SIGNUP = environment.API_SERVER+'signup';
+  private API_SIGNUP = environment.API_SERVER + 'signup';
 
   // private API_SIGNIN = environment.API_LOCAL +'signin';
   private API_SIGNIN = environment.API_SERVER + 'signin';
