@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     );
     this.authService.signIn(this.loginForm).subscribe(data => {
       // tslint:disable-next-line:triple-equals
-      if (data.token!=undefined){
+      if (data.token != undefined){
         this.tokenService.setTokenKey(data.token);
         this.tokenService.setNameKey(data.name);
         this.tokenService.setRoleKey(data.roles);

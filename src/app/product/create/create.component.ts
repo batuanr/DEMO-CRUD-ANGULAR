@@ -42,9 +42,7 @@ export class CreateComponent implements OnInit {
       new Category(this.form.id),
       this.form.avatar
     );
-   console.log(this.product);
    this.productService.create(this.product).subscribe(data => {
-      console.log('data ==> ', data);
       if (JSON.stringify(data) === JSON.stringify(this.error1)){
         this.status = 'The name is existed! Please try again!';
       }

@@ -39,10 +39,9 @@ export class ProductComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result){
         this.deleteCategory(id);
       }
-      console.log(`Dialog result: ${result}`);
     });
   }
 }
