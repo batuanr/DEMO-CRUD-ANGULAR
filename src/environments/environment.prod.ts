@@ -2,7 +2,9 @@ export const environment = {
   // API_LOCAL
   API_LOCAL: 'http://localhost:8080/api/',
   // API_SERVER
-  API_SERVER: 'https://c0821h1.herokuapp.com/api/',
+  API_SERVER: 'https://kasawoa0.herokuapp.com/api/',
+  API_SERVER_CATEGORY: 'https://kasawoa0.herokuapp.com/category/',
+  API_SERVER_PRODUCT: 'https://kasawoa0.herokuapp.com/products/',
   API_CATEGORY: 'http://localhost:8080/category',
   API_PRODUCT: 'http://localhost:8080/products',
   production: true,

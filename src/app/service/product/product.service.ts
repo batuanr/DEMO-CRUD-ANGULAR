@@ -3,7 +3,7 @@ import {environment} from '../../../environments/environment.prod';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../../model/Product';
-const API = environment.API_PRODUCT;
+const API = environment.API_SERVER_PRODUCT;
 @Injectable({
   providedIn: 'root'
 })
@@ -24,15 +24,15 @@ export class ProductService {
     return this.http.get<Product[]>(API);
   }
   create(product: Product): Observable<Product> {
-    return this.http.post<Product>(API + '/create', product);
+    return this.http.post<Product>(API + 'create', product);
   }
   delete(id: number): Observable<Product>{
-    return this.http.delete<Product>(API + '/' + id);
+    return this.http.delete<Product>(API + id);
   }
   getOne(id: number): Observable<Product>{
-    return this.http.get<Product>(API + '/findOne/' + id);
+    return this.http.get<Product>(API + 'findOne/' + id);
   }
   update(id: number, product: Product): Observable<Product>{
-    return this.http.put<Product>(API + '/edit/' + id, product);
+    return this.http.put<Product>(API + 'edit/' + id, product);
   }
 }

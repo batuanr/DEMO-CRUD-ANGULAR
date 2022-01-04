@@ -18,7 +18,8 @@ export class AuthService {
   // API_SERVER
   // private API_SIGNUP = environment.API_SERVER+'signup';
 
-  private API_SIGNIN = environment.API_LOCAL +'signin';
+  // private API_SIGNIN = environment.API_LOCAL +'signin';
+  private API_SIGNIN = environment.API_SERVER + 'signin';
   constructor(private http: HttpClient) { }
   signUp(signUpForm: SignUpForm): Observable<any>{
     return this.http.post(this.API_SIGNUP, signUpForm);
