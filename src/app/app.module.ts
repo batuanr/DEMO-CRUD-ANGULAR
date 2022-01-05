@@ -44,6 +44,8 @@ import { DialogComponent } from './product/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {httpInterceptorProviders} from './security/auth.interceptor';
+import {AuthGuard} from './security/auth.guard';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
@@ -67,11 +69,11 @@ export const appRoutes: Routes = [
   },
   {
     path: 'createProduct',
-    component: CreateComponent
+    component: CreateComponent, canActivate: [AuthGuard]
   },
   {
     path: 'update/:id',
-    component: UpdateComponent
+    component: UpdateComponent, canActivate: [AuthGuard]
   }
 ];
 
@@ -96,7 +98,7 @@ export const appRoutes: Routes = [
     // tslint:disable-next-line:max-line-length
     RouterModule.forRoot(appRoutes, {useHash: false}), MatFormFieldModule, FormsModule, ReactiveFormsModule, MatInputModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatDialogModule, MatTableModule, MatPaginatorModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

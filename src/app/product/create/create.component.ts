@@ -36,7 +36,6 @@ export class CreateComponent implements OnInit {
     });
   }
   ngSubmit(){
-   console.log(this.form.id);
    this.product = new Product(
       this.form.name,
       new Category(this.form.id),
