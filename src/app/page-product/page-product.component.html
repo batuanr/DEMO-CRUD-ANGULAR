@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <div class="search">
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Search Category:</mat-label>
+                        <input matInput [(ngModel)]="searchText" (ngModelChange)="search()">
+                        <mat-icon color="accent" matSuffix>search</mat-icon>
+                    </mat-form-field><br>
+                </div>
+<!--                <div class="row" >-->
+<!--                    <div class="col-3" *ngFor="let product of products ">-->
+<!--                        <div class="card">-->
+<!--                            <i style="font-size: 1.5vw; text-align: center; color: crimson">{{product.name}}</i>-->
+<!--                            <img class="img" [src]="product.avatar">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div class="row">
+                    <div class="col-md-3" *ngFor="let product of products ">
+                        <section class="panel">
+                            <div class="pro-img-box">
+                                <img [src]="product.avatar"  />
+                                <a  class="adtocart">
+                                    <mat-icon matSuffix>shopping_cart</mat-icon>
+                                </a>
+                            </div>
+
+                            <div class="panel-body text-center">
+                                <h4 class="view" routerLink="/view/{{product.id}}">{{product.name}}</h4>
+<!--                             <p class="price" th:text="${product.price}"></p>-->
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </mat-card>
+            <div class="page-btn" id="page">
+                <div *ngIf="pageNumber > 0" style="float: left">
+                    <span (click)="previousPage()">&#8592;</span>
+                </div>
+
+                <div *ngFor="let num of numPage" style="float: left" [hidden]="(count + num ) > totalPage">
+                    <span *ngIf="(count + num -1) != pageNumber;else elseBlock" (click)="selectPage(count + num - 1)" >{{count + num}}</span>
+                    <ng-template  #elseBlock><span class="page">{{count + num}}</span></ng-template>
+                </div>
+                <div *ngIf="(pageNumber + 1) < totalPage" style="float: left">
+                    <span (click)="nextPage()">&#8594;</span>
+                </div>
+                <div style="float: right">
+                    <p>{{pageNumber + 1}} of {{totalPage}} page</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -5,8 +5,8 @@ export const environment = {
   API_SERVER: 'https://kasawoa0.herokuapp.com/api/',
   API_SERVER_CATEGORY: 'https://kasawoa0.herokuapp.com/category/',
   API_SERVER_PRODUCT: 'https://kasawoa0.herokuapp.com/products/',
-  API_CATEGORY: 'http://localhost:8080/category',
-  API_PRODUCT: 'http://localhost:8080/products',
+  API_CATEGORY: 'http://localhost:8080/category/',
+  API_PRODUCT: 'http://localhost:8080/products/',
   production: true,
   firebaseConfig: {
     apiKey: 'AIzaSyAN3u0A-OSXnkXfaqjWNjYrEd0asM8C_C4',

@@ -46,6 +46,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {httpInterceptorProviders} from './security/auth.interceptor';
 import {AuthGuard} from './security/auth.guard';
+import { PageProductComponent } from './page-product/page-product.component';
+import { ViewComponent } from './view/view.component';
+import { CartComponent } from './cart/cart.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
@@ -74,12 +77,20 @@ export const appRoutes: Routes = [
   {
     path: 'update/:id',
     component: UpdateComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'home',
+    component: PageProductComponent
+  },
+  {
+    path: 'view/:id',
+    component: ViewComponent
   }
 ];
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, ProductComponent, CategoryComponent, UploadComponent, CreateComponent, DeleteComponent, UpdateComponent, DialogComponent],
+  declarations: [AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, ProductComponent, CategoryComponent, UploadComponent, CreateComponent, DeleteComponent, UpdateComponent, DialogComponent, PageProductComponent, ViewComponent, CartComponent],
   imports: [
     HttpClientModule,
     BrowserModule,

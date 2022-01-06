@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment.prod';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../../model/Product';
+// const API = environment.API_PRODUCT;
 const API = environment.API_SERVER_PRODUCT;
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,10 @@ export class ProductService {
   setStatus(status: string){
     this.status = status;
   }
-
+  page(page, search){
+    const params = page;
+    return this.http.get(API + 'page?name=' + search, {params});
+  }
   getAll(): Observable<Product[]>{
     return this.http.get<Product[]>(API);
   }
